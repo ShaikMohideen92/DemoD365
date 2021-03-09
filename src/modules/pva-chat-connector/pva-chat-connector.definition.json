@@ -1,0 +1,761 @@
+{
+    "$type": "contentModule",
+    "friendlyName": "Commerce Chat with Power Virtual Agents",
+    "name": "pva-chat-connector",
+    "description": "Chat interface with Power Virtual Agent, and optional proactive chat.",
+    "categories": [
+        "Customer Service chat Connectors"
+    ],
+    "tags": [
+        "power",
+        "virtual",
+        "agent",
+        "customer",
+        "service",
+        "pva",
+        "Chat",
+        "connector",
+        "proactive"
+    ],
+    "dataActions": {},
+    "config": {
+        "botTokenAPILoginURL": {
+            "friendlyName": "Login URL",
+            "description": "Login URL domain/oauth/token",
+            "type": "string",
+            "scope": "module",
+            "group": "Bot token API (recomended)"
+        },
+        "botTokenAPIUsername": {
+            "friendlyName": "Username",
+            "description": "Username",
+            "type": "string",
+            "scope": "module",
+            "group": "Bot token API (recommended)"
+        },
+        "botTokenAPIPassword": {
+            "friendlyName": "Password",
+            "description": "Password",
+            "type": "string",
+            "scope": "module",
+            "group": "Bot token API (recommended)"
+        },
+        "botTokenAPIClientID": {
+            "friendlyName": "Client id",
+            "description": "Client id",
+            "type": "string",
+            "scope": "module",
+            "group": "Bot token API (recommended)"
+        },
+        "botTokenAPIClientSecret": {
+            "friendlyName": "Client secret",
+            "description": "Client secret",
+            "type": "string",
+            "scope": "module",
+            "group": "Bot token API (recommended)"
+        },
+        "botTokenAPIGetBotTokenURL": {
+            "friendlyName": "Get bot token URL",
+            "description": "URL of your API returning bot conversation token.",
+            "type": "string",
+            "scope": "module",
+            "group": "Bot token API (recommended)"
+        },
+        "botFrameworkCDNURL": {
+            "friendlyName": "Bot framework webchat CDN URL",
+            "description": "Bot framework webchat CDN URL",
+            "type": "string",
+            "scope": "module",
+            "required": true,
+            "default": "https://cdn.botframework.com/botframework-webchat/latest/webchat.js?v=1",
+            "group": "Bot parameters"
+        },
+        "botframeworkDirectlineTokenURL": {
+            "friendlyName": "Botframework directline token generate URL",
+            "description": "Botframework directline token generate URL",
+            "type": "string",
+            "scope": "module",
+            "required": true,
+            "default": "https://directline.botframework.com/v3/directline/tokens/generate",
+            "group": "Bot parameters"
+        },
+        "tokenSecret": {
+            "friendlyName": "Botframework Secret",
+            "description": "Botframework Secret can be used to obtain conversation token, this is not secure. It should be used only for testing.",
+            "type": "string",
+            "scope": "module",
+            "group": "Bot parameters"
+        },
+        "powervaDirectlineTokenURL": {
+            "friendlyName": "PVA directline token generate URL",
+            "description": "PVA directline token generate URL",
+            "type": "string",
+            "scope": "module",
+            "required": true,
+            "default": "https://powerva.microsoft.com/api/botmanagement/v1/directline/directlinetoken",
+            "group": "Bot parameters"
+        },
+        "botID": {
+            "friendlyName": "PVA bot id",
+            "description": "Bot and tenant id can be used to obtain conversation token, this is not secure. It should be used only for testing.",
+            "type": "string",
+            "scope": "module",
+            "group": "Bot parameters"
+        },
+        "tenantID": {
+            "friendlyName": "PVA tenant id",
+            "description": "Bot and tenant id can be used to obtain conversation token, this is not secure. It should be used only for testing.",
+            "type": "string",
+            "scope": "module",
+            "group": "Bot parameters"
+        },
+        "position": {
+            "friendlyName": "Chat position",
+            "description": "CSS position",
+            "type": "string",
+            "scope": "module",
+            "group": "Module CSS",
+            "default": "fixed",
+            "required": true
+        },
+        "chatHeight": {
+            "friendlyName": "Chat height",
+            "description": "Chat height",
+            "type": "string",
+            "scope": "module",
+            "group": "Module CSS",
+            "default": "80%"
+        },
+        "chatWidth": {
+            "friendlyName": "Chat width",
+            "description": "Chat width",
+            "type": "string",
+            "scope": "module",
+            "group": "Module CSS",
+            "default": "30em"
+        },
+        "chatButtonHeader": {
+            "friendlyName": "Chat button header",
+            "description": "Chat button header",
+            "type": "string",
+            "scope": "module",
+            "group": "Module CSS",
+            "default": "Let's chat!"
+        },
+        "chatButtonText": {
+            "friendlyName": "Chat button text",
+            "description": "Chat button text",
+            "type": "string",
+            "scope": "module",
+            "group": "Module CSS",
+            "default": "We're Online"
+        },
+        "chatHeaderText": {
+            "friendlyName": "Chat header text",
+            "description": "Chat header text",
+            "type": "string",
+            "scope": "module",
+            "group": "Module CSS",
+            "default": "Let's chat!"
+        },
+        "chatHeaderHeight": {
+            "friendlyName": "Chat header height",
+            "description": "CSS chat header height",
+            "type": "string",
+            "scope": "module",
+            "group": "Module CSS",
+            "default": "70px"
+        },
+        "chatBorderColor": {
+            "friendlyName": "Chat border color",
+            "description": "CSS chat border color",
+            "type": "string",
+            "scope": "module",
+            "group": "Module CSS",
+            "default": "#E6E6E6"
+        },
+        "chatBorderStyle": {
+            "friendlyName": "Chat border style",
+            "description": "CSS chat border style",
+            "type": "string",
+            "scope": "module",
+            "group": "Module CSS",
+            "default": "solid"
+        },
+        "chatBorderWidth": {
+            "friendlyName": "Chat border width",
+            "description": "CSS chat border width",
+            "type": "string",
+            "scope": "module",
+            "group": "Module CSS",
+            "default": "1px"
+        },
+        "top": {
+            "friendlyName": "Top",
+            "description": "CSS top",
+            "type": "string",
+            "scope": "module",
+            "group": "Module CSS",
+            "default": ""
+        },
+        "bottom": {
+            "friendlyName": "Bottom",
+            "description": "CSS bottom",
+            "type": "string",
+            "scope": "module",
+            "group": "Module CSS",
+            "default": "2em"
+        },
+        "left": {
+            "friendlyName": "Left",
+            "description": "CSS left",
+            "type": "string",
+            "scope": "module",
+            "group": "Module CSS",
+            "default": ""
+        },
+        "right": {
+            "friendlyName": "Right",
+            "description": "CSS right",
+            "type": "string",
+            "scope": "module",
+            "group": "Module CSS",
+            "default": "2em"
+        },
+        "headerBackgroundColor": {
+            "friendlyName": "Header background color",
+            "description": "CSS header background color",
+            "type": "string",
+            "scope": "module",
+            "group": "Module CSS",
+            "default": "#358717"
+        },
+        "headerBackgroundImageURL": {
+            "friendlyName": "Header background image URL",
+            "description": "CSS header background image URL",
+            "type": "string",
+            "scope": "module",
+            "group": "Module CSS",
+            "default": ""
+        },
+        "headerTextColor": {
+            "friendlyName": "Header text color",
+            "description": "CSS header text color",
+            "type": "string",
+            "scope": "module",
+            "group": "Module CSS",
+            "default": "#FFFFFF"
+        },
+        "storeLogoURL": {
+            "friendlyName": "Store logo URL",
+            "description": "Store logo URL",
+            "type": "string",
+            "scope": "module",
+            "group": "Module CSS",
+            "default": ""
+        },
+        "storeLogoBackgroundColor": {
+            "friendlyName": "Store logo background color",
+            "description": "CSS store logo background color",
+            "type": "string",
+            "scope": "module",
+            "group": "Module CSS",
+            "default": "#FFFFFF"
+        },
+        "startChatButtonBackgroundColor": {
+            "friendlyName": "Start chat button background color",
+            "description": "CSS start chat button background color",
+            "type": "string",
+            "scope": "module",
+            "group": "Module CSS",
+            "default": "#FFFFFF"
+        },
+        "startChatButtonTextColor": {
+            "friendlyName": "Start chat button text color",
+            "description": "CSS start chat button text color",
+            "type": "string",
+            "scope": "module",
+            "group": "Module CSS",
+            "default": "#000000"
+        },
+        "startChatButtonBorderColor": {
+            "friendlyName": "Start chat button border color",
+            "description": "CSS start chat button border color",
+            "type": "string",
+            "scope": "module",
+            "group": "Module CSS",
+            "default": "#E6E6E6"
+        },
+        "startChatButtonBorderRadius": {
+            "friendlyName": "Start chat button border radius",
+            "description": "CSS start chat button border radius",
+            "type": "string",
+            "scope": "module",
+            "group": "Module CSS",
+            "default": "50px"
+        },
+        "startChatButtonBorderStyle": {
+            "friendlyName": "Start chat button border style",
+            "description": "CSS start chat button border style",
+            "type": "string",
+            "scope": "module",
+            "group": "Module CSS",
+            "default": "solid"
+        },
+        "startChatButtonBorderWidth": {
+            "friendlyName": "Start chat button border width",
+            "description": "CSS start chat button border width",
+            "type": "string",
+            "scope": "module",
+            "group": "Module CSS",
+            "default": "1px"
+        },
+        "primaryFont": {
+            "friendlyName": "Font family",
+            "description": "CSS font family (Calibri, Helvetica Neue, Arial, sans-serif)",
+            "type": "string",
+            "scope": "module",
+            "group": "Chat CSS",
+            "default": "Calibri, Helvetica Neue, Arial, sans-serif"
+        },
+        "backgroundColor": {
+            "friendlyName": "Chat background color",
+            "description": "CSS chat background color",
+            "type": "string",
+            "scope": "module",
+            "group": "Chat CSS",
+            "default": "White"
+        },
+        "bubbleBackground": {
+            "friendlyName": "Bot bubble background color",
+            "description": "CSS bot bubble background color",
+            "type": "string",
+            "scope": "module",
+            "group": "Chat CSS",
+            "default": "White"
+        },
+        "bubbleTextColor": {
+            "friendlyName": "Bot bubble text color",
+            "description": "CSS bot bubble text color",
+            "type": "string",
+            "scope": "module",
+            "group": "Chat CSS",
+            "default": "Black"
+        },
+        "bubbleBorderColor": {
+            "friendlyName": "Bot bubble border color",
+            "description": "CSS bot bubble border color",
+            "type": "string",
+            "scope": "module",
+            "group": "Chat CSS",
+            "default": "#E6E6E6"
+        },
+        "bubbleBorderRadius": {
+            "friendlyName": "Bot bubble border radius",
+            "description": "CSS bot bubble border radius",
+            "type": "string",
+            "scope": "module",
+            "group": "Chat CSS",
+            "default": "2"
+        },
+        "bubbleBorderStyle": {
+            "friendlyName": "Bot bubble border style",
+            "description": "CSS bot bubble border style",
+            "type": "string",
+            "scope": "module",
+            "group": "Chat CSS",
+            "default": "solid"
+        },
+        "bubbleBorderWidth": {
+            "friendlyName": "Bot bubble border width",
+            "description": "CSS bot bubble border width",
+            "type": "string",
+            "scope": "module",
+            "group": "Chat CSS",
+            "default": "1"
+        },
+        "bubbleFromUserBackground": {
+            "friendlyName": "User bubble background color",
+            "description": "CSS user bubble background color",
+            "type": "string",
+            "scope": "module",
+            "group": "Chat CSS",
+            "default": "White"
+        },
+        "bubbleFromUserTextColor": {
+            "friendlyName": "User bubble text color",
+            "description": "CSS user bubble text color",
+            "type": "string",
+            "scope": "module",
+            "group": "Chat CSS",
+            "default": "Black"
+        },
+        "bubbleFromUserBorderColor": {
+            "friendlyName": "User bubble border color",
+            "description": "CSS user bubble border color",
+            "type": "string",
+            "scope": "module",
+            "group": "Chat CSS",
+            "default": "#E6E6E6"
+        },
+        "bubbleFromUserBorderRadius": {
+            "friendlyName": "User bubble border radius",
+            "description": "CSS user bubble border radius",
+            "type": "string",
+            "scope": "module",
+            "group": "Chat CSS",
+            "default": "2"
+        },
+        "bubbleFromUserBorderStyle": {
+            "friendlyName": "User bubble border style",
+            "description": "CSS user bubble border style",
+            "type": "string",
+            "scope": "module",
+            "group": "Chat CSS",
+            "default": "solid"
+        },
+        "bubbleFromUserBorderWidth": {
+            "friendlyName": "User bubble border width",
+            "description": "CSS user bubble border width",
+            "type": "string",
+            "scope": "module",
+            "group": "Chat CSS",
+            "default": "1"
+        },
+        "avatarBorderRadius": {
+            "friendlyName": "Avatar border radius",
+            "description": "CSS avatar border radius",
+            "type": "string",
+            "scope": "module",
+            "group": "Avatar style",
+            "default": "50%"
+        },
+        "avatarSize": {
+            "friendlyName": "Avatar size",
+            "description": "CSS avatar size in pixels",
+            "type": "string",
+            "scope": "module",
+            "group": "Avatar style",
+            "default": "40"
+        },
+        "botAvatarBackgroundColor": {
+            "friendlyName": "Bot avatar background color",
+            "description": "CSS bot avatar background color",
+            "type": "string",
+            "scope": "module",
+            "group": "Avatar style",
+            "default": "undefined"
+        },
+        "botAvatarImage": {
+            "friendlyName": "Bot avatar image URL",
+            "description": "Bot avatar image URL",
+            "type": "string",
+            "scope": "module",
+            "group": "Avatar style",
+            "default": ""
+        },
+        "botAvatarInitials": {
+            "friendlyName": "Bot avatar initials",
+            "description": "CSS bot avatar initials",
+            "type": "string",
+            "scope": "module",
+            "group": "Avatar style",
+            "default": ""
+        },
+        "userAvatarBackgroundColor": {
+            "friendlyName": "User avatar background color",
+            "description": "CSS user avatar background color",
+            "type": "string",
+            "scope": "module",
+            "group": "Avatar style",
+            "default": "undefined"
+        },
+        "userAvatarImage": {
+            "friendlyName": "User avatar image URL",
+            "description": "User avatar image URL",
+            "type": "string",
+            "scope": "module",
+            "group": "Avatar style",
+            "default": ""
+        },
+        "userAvatarInitials": {
+            "friendlyName": "User avatar initials",
+            "description": "CSS user avatar initials",
+            "type": "string",
+            "scope": "module",
+            "group": "Avatar style",
+            "default": ""
+        },
+        "suggestedActionLayout": {
+            "friendlyName": "Suggested action layout - either 'carousel' or 'stacked'",
+            "description": "Suggested action layout - either 'carousel' or 'stacked'",
+            "type": "string",
+            "scope": "module",
+            "group": "Suggested action CSS",
+            "default": "carousel"
+        },
+        "suggestedActionBackground": {
+            "friendlyName": "Suggested action background color",
+            "description": "CSS suggested action background color",
+            "type": "string",
+            "scope": "module",
+            "group": "Suggested action CSS",
+            "default": "White"
+        },
+        "suggestedActionTextColor": {
+            "friendlyName": "Suggested action text color",
+            "description": "CSS suggested action text color",
+            "type": "string",
+            "scope": "module",
+            "group": "Suggested action CSS",
+            "default": "undefined"
+        },
+        "suggestedActionBorderColor": {
+            "friendlyName": "Suggested action border color",
+            "description": "CSS suggested action border color",
+            "type": "string",
+            "scope": "module",
+            "group": "Suggested action CSS",
+            "default": "undefined"
+        },
+        "suggestedActionBorderRadius": {
+            "friendlyName": "Suggested action border radius",
+            "description": "CSS suggested action border radius",
+            "type": "string",
+            "scope": "module",
+            "group": "Suggested action CSS",
+            "default": "0"
+        },
+        "suggestedActionBorderStyle": {
+            "friendlyName": "Suggested action border style",
+            "description": "CSS suggested action border style",
+            "type": "string",
+            "scope": "module",
+            "group": "Suggested action CSS",
+            "default": "solid"
+        },
+        "suggestedActionBorderWidth": {
+            "friendlyName": "Suggested action border width",
+            "description": "CSS suggested action border width",
+            "type": "string",
+            "scope": "module",
+            "group": "Suggested action CSS",
+            "default": "2"
+        },
+        "proactiveChatEnabled": {
+            "friendlyName": "Enabled",
+            "description": "Enable proactive chat.",
+            "type": "boolean",
+            "scope": "module",
+            "group": "Proactive chat",
+            "default": false,
+            "required": true
+        },
+        "proactiveDefaultMessage": {
+            "friendlyName": "Default chat greeting",
+            "description": "Initial proactive chat message.",
+            "type": "string",
+            "scope": "module",
+            "group": "Proactive chat",
+            "default": "Hi! Just checking to see if I can help you with something.",
+            "required": true
+        },
+        "proactiveOnWaitTimeSeconds": {
+            "friendlyName": "Wait time in seconds",
+            "description": "Time in seconds spent on page before chat is triggered.",
+            "type": "integer",
+            "scope": "module",
+            "group": "Proactive chat"
+        },
+        "proactiveOnWaitTimeMessage": {
+            "friendlyName": "Wait time chat greeting",
+            "description": "Initial proactive chat message.",
+            "type": "string",
+            "scope": "module",
+            "group": "Proactive chat",
+            "default": "Hi! Just checking in to see if I can help answer any questions you may have."
+        },
+        "proactiveOnPageVisitNumber": {
+            "friendlyName": "Number of page visits",
+            "description": "Number of page visits before chat is triggered.",
+            "type": "integer",
+            "scope": "module",
+            "group": "Proactive chat"
+        },
+        "proactiveOnPageVisitMessage": {
+            "friendlyName": "Number of page visits chat greeting",
+            "description": "Initial proactive chat message.",
+            "type": "string",
+            "scope": "module",
+            "group": "Proactive chat",
+            "default": "Hi! Do you have a question? I am here to help."
+        },
+        "proactiveOnSpecificPageList": {
+            "friendlyName": "Specific pages",
+            "description": "List of pages that on visit will trigger the chat.",
+            "type": "array",
+            "scope": "module",
+            "group": "Proactive chat",
+            "items": {
+                "type": "string"
+            }
+        },
+        "proactiveOnSpecificPageMessage": {
+            "friendlyName": "Specific pages chat greeting",
+            "description": "Initial proactive chat message.",
+            "type": "string",
+            "scope": "module",
+            "group": "Proactive chat",
+            "default": "Hi! Do you have a question regarding this page? I am here to help."
+        },
+        "proactiveOnFromSpecificPageList": {
+            "friendlyName": "From specific pages",
+            "description": "List of pages that visiting from will trigger the chat.",
+            "type": "array",
+            "scope": "module",
+            "group": "Proactive chat",
+            "items": {
+                "type": "string"
+            }
+        },
+        "proactiveOnFromSpecificPageMessage": {
+            "friendlyName": "From specific pages chat greeting",
+            "description": "Initial proactive chat message.",
+            "type": "string",
+            "scope": "module",
+            "group": "Proactive chat",
+            "default": "Hi! Just checking in to see if I can help answer any questions you may have."
+        },
+        "proactiveOnSpecificGeographyCountry": {
+            "friendlyName": "Specific geography country code (2 letters)",
+            "description": "Visit from specified country will trigger proactive chat.",
+            "type": "string",
+            "scope": "module",
+            "group": "Proactive chat"
+        },
+        "proactiveOnSpecificGeographyMessage": {
+            "friendlyName": "Specific geography chat greeting",
+            "description": "Initial proactive chat message.",
+            "type": "string",
+            "scope": "module",
+            "group": "Proactive chat",
+            "default": "Hi! Just checking in to see if I can help answer any questions you may have."
+        },
+        "proactiveOnDateRangeStart": {
+            "friendlyName": "Date range start date (dd/mm/yyyy)",
+            "description": "After this date proactive chat will be automatically triggered.",
+            "type": "string",
+            "scope": "module",
+            "group": "Proactive chat"
+        },
+        "proactiveOnDateRangeEnd": {
+            "friendlyName": "Date range end date (dd/mm/yyyy)",
+            "description": "Until this date proactive chat will be automatically triggered.",
+            "type": "string",
+            "scope": "module",
+            "group": "Proactive chat"
+        },
+        "proactiveOnDateRangeMessage": {
+            "friendlyName": "Date range chat greeting",
+            "description": "Initial proactive chat message.",
+            "type": "string",
+            "scope": "module",
+            "group": "Proactive chat",
+            "default": "Hi! Just checking in to see if I can help answer any questions you may have."
+        },
+        "proactiveOnCartAmounMin": {
+            "friendlyName": "Cart amount minimum",
+            "description": "Any amount in the shopping cart larger that this, and smaller that Maximum amount (if it is set), will trigger proactive chat.",
+            "type": "number",
+            "scope": "module",
+            "group": "Proactive chat"
+        },
+        "proactiveOnCartAmountMax": {
+            "friendlyName": "Cart amount maximum",
+            "description": "Any amount in the shopping cart smaller that this, and larger that Minimum amount (if it is set), will trigger proactive chat.",
+            "type": "number",
+            "scope": "module",
+            "group": "Proactive chat"
+        },
+        "proactiveOnCartAmountMessage": {
+            "friendlyName": "Cart amount chat greeting",
+            "description": "Initial proactive chat message.",
+            "type": "string",
+            "scope": "module",
+            "group": "Proactive chat",
+            "default": "Hi! Just checking in to see if I can help answer any questions you may have."
+        },
+        "proactiveOnCartNoOfItemsMin": {
+            "friendlyName": "Cart no. of items minimum",
+            "description": "Any number of items in the shopping cart larger that this, and smaller that Cart No. of Items Maximum (if it is set), will trigger proactive chat.",
+            "type": "number",
+            "scope": "module",
+            "group": "Proactive chat"
+        },
+        "proactiveOnCartNoOfItemsMax": {
+            "friendlyName": "Cart no. of items maximum",
+            "description": "Any number of items in the shopping cart smaller that this, and larger that Cart No. of Items Minimum (if it is set), will trigger proactive chat.",
+            "type": "number",
+            "scope": "module",
+            "group": "Proactive chat"
+        },
+        "proactiveOnCartNoOfItemsMessage": {
+            "friendlyName": "Cart no. of items chat greeting",
+            "description": "Initial proactive chat message.",
+            "type": "string",
+            "scope": "module",
+            "group": "Proactive chat",
+            "default": "Hi! Just checking in to see if I can help answer any questions you may have."
+        },
+        "anonymousUserName": {
+            "friendlyName": "Anonymous user name",
+            "description": "Anonymous user name",
+            "type": "string",
+            "scope": "module",
+            "group": "Misc",
+            "required": true,
+            "default": "Visitor"
+        },
+        "unableToLoadChatMessage": {
+            "friendlyName": "Unable to load chat message",
+            "description": "Unable to load chat message",
+            "type": "string",
+            "scope": "module",
+            "group": "Misc",
+            "required": true,
+            "default": "Unable to load chat..."
+        },
+        "proactiveOnCartSpecificProductList": {
+            "friendlyName": "Specific product in the cart list",
+            "description": "List of product IDs that adding to a cart will trigger proactive chat.",
+            "type": "array",
+            "scope": "module",
+            "group": "Proactive chat",
+            "items": {
+                "type": "string"
+            }
+        },
+        "proactiveOnCartSpecificProductMessage": {
+            "friendlyName": "Specific product in the cart chat greeting",
+            "description": "Initial proactive chat message.",
+            "type": "string",
+            "scope": "module",
+            "group": "Proactive chat",
+            "default": "Hi! Just checking in to see if I can help answer any questions you may have."
+        },
+        "proactiveTriggerQuery": {
+            "friendlyName": "Query to trigger specific topic",
+            "description": "Trigger query to fire specific topic.",
+            "type": "string",
+            "scope": "module",
+            "group": "Proactive chat",
+            "default": "Hi"
+        }
+    },
+    "resources": {
+        "resourceKey": {
+            "comment": "resource description",
+            "value": "resource value"
+        }
+    }
+}

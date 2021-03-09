@@ -1,0 +1,267 @@
+{
+    "$type": "contentModule",
+    "friendlyName": "Commerce Chat with Customer Service",
+    "name": "msdyn365-cs-chat-connector",
+    "description": "Chat interface with live agent using Customer Service. Optional Power Virtual Agents and proactive chat.",
+    "categories": [
+        "Customer Service chat connectors"
+    ],
+    "tags": [
+        "dynamics",
+        "365",
+        "customer",
+        "service",
+        "omnichannel",
+        "chat",
+        "connector",
+        "proactive"
+    ],
+    "dataActions": {},
+    "config": {
+        "src": {
+            "friendlyName": "Script source",
+            "description": "Script URL.",
+            "type": "string",
+            "scope": "module",
+            "group": "Bot properties",
+            "required": true
+        },
+        "dataAppId": {
+            "friendlyName": "Data application id",
+            "description": "Script data-app-id attribute.",
+            "type": "string",
+            "scope": "module",
+            "group": "Bot properties",
+            "required": true
+        },
+        "dataOrgId": {
+            "friendlyName": "Data organization id",
+            "description": "Script data-org-id attribute.",
+            "type": "string",
+            "scope": "module",
+            "group": "Bot properties",
+            "required": true
+        },
+        "dataOrgUrl": {
+            "friendlyName": "Data organization URL",
+            "description": "Script data-org-url attribute.",
+            "type": "string",
+            "scope": "module",
+            "group": "Bot properties",
+            "required": true
+        },
+        "dataHideChatButton": {
+            "friendlyName": "Data hide chat button",
+            "description": "Script data-hide-chat-button attribute.",
+            "type": "boolean",
+            "scope": "module",
+            "group": "Bot properties"
+        },
+        "dataColorOverride": {
+            "friendlyName": "Data color override",
+            "description": "Script data-color-override attribute.",
+            "type": "string",
+            "scope": "module",
+            "group": "Bot properties"
+        },
+        "dataFontFamilyOverride": {
+            "friendlyName": "Data font family override",
+            "description": "Script data-font-family-override attribute.",
+            "type": "string",
+            "scope": "module",
+            "group": "Bot properties"
+        },
+        "proactiveChatEnabled": {
+            "friendlyName": "Enabled",
+            "description": "Enable proactive chat.",
+            "type": "boolean",
+            "scope": "module",
+            "group": "Proactive chat",
+            "default": false,
+            "required": true
+        },
+        "proactiveDefaultMessage": {
+            "friendlyName": "Default chat greeting",
+            "description": "Initial proactive chat message.",
+            "type": "string",
+            "scope": "module",
+            "group": "Proactive chat",
+            "default": "Hi! Just checking to see if I can help you with something.",
+            "required": true
+        },
+        "proactiveOnWaitTimeSeconds": {
+            "friendlyName": "Wait time in seconds",
+            "description": "Time in seconds spent on page before chat is triggered.",
+            "type": "integer",
+            "scope": "module",
+            "group": "Proactive chat"
+        },
+        "proactiveOnWaitTimeMessage": {
+            "friendlyName": "Wait time chat greeting",
+            "description": "Initial proactive chat message.",
+            "type": "string",
+            "scope": "module",
+            "group": "Proactive chat",
+            "default": "Hi! Just checking in to see if I can help answer any questions you may have."
+        },
+        "proactiveOnPageVisitNumber": {
+            "friendlyName": "Number of page visits",
+            "description": "Number of page visits before chat is triggered.",
+            "type": "integer",
+            "scope": "module",
+            "group": "Proactive chat"
+        },
+        "proactiveOnPageVisitMessage": {
+            "friendlyName": "Number of page visits chat greeting",
+            "description": "Initial proactive chat message.",
+            "type": "string",
+            "scope": "module",
+            "group": "Proactive chat",
+            "default": "Hi! Do you have a question? I am here to help."
+        },
+        "proactiveOnSpecificPageList": {
+            "friendlyName": "Specific pages",
+            "description": "List of pages that on visit will trigger the chat.",
+            "type": "array",
+            "scope": "module",
+            "group": "Proactive chat",
+            "items": {
+                "type": "string"
+            }
+        },
+        "proactiveOnSpecificPageMessage": {
+            "friendlyName": "Specific pages chat greeting",
+            "description": "Initial proactive chat message.",
+            "type": "string",
+            "scope": "module",
+            "group": "Proactive chat",
+            "default": "Hi! Do you have a question regarding this page? I am here to help."
+        },
+        "proactiveOnFromSpecificPageList": {
+            "friendlyName": "From specific pages",
+            "description": "List of pages that visiting from will trigger the chat.",
+            "type": "array",
+            "scope": "module",
+            "group": "Proactive chat",
+            "items": {
+                "type": "string"
+            }
+        },
+        "proactiveOnFromSpecificPageMessage": {
+            "friendlyName": "From specific pages chat greeting",
+            "description": "Initial proactive chat message.",
+            "type": "string",
+            "scope": "module",
+            "group": "Proactive chat",
+            "default": "Hi! Just checking in to see if I can help answer any questions you may have."
+        },
+        "proactiveOnSpecificGeographyCountry": {
+            "friendlyName": "Specific geography country code (2 letters)",
+            "description": "Visit from specified country will trigger proactive chat.",
+            "type": "string",
+            "scope": "module",
+            "group": "Proactive chat"
+        },
+        "proactiveOnSpecificGeographyMessage": {
+            "friendlyName": "Specific geography chat greeting",
+            "description": "Initial proactive chat message.",
+            "type": "string",
+            "scope": "module",
+            "group": "Proactive chat",
+            "default": "Hi! Just checking in to see if I can help answer any questions you may have."
+        },
+        "proactiveOnDateRangeStart": {
+            "friendlyName": "Date range start date (dd/mm/yyyy)",
+            "description": "After this date proactive chat will be automatically triggered.",
+            "type": "string",
+            "scope": "module",
+            "group": "Proactive chat"
+        },
+        "proactiveOnDateRangeEnd": {
+            "friendlyName": "Date range end date (dd/mm/yyyy)",
+            "description": "Until this date proactive chat will be automatically triggered.",
+            "type": "string",
+            "scope": "module",
+            "group": "Proactive chat"
+        },
+        "proactiveOnDateRangeMessage": {
+            "friendlyName": "Date range chat greeting",
+            "description": "Initial proactive chat message.",
+            "type": "string",
+            "scope": "module",
+            "group": "Proactive chat",
+            "default": "Hi! Just checking in to see if I can help answer any questions you may have."
+        },
+        "anonymousUserName": {
+            "friendlyName": "Anonymous user name",
+            "description": "Anonymous user name",
+            "type": "string",
+            "scope": "module",
+            "group": "Misc",
+            "required": true,
+            "default": "Visitor"
+        },
+        "proactiveOnCartAmounMin": {
+            "friendlyName": "Cart amount minimum",
+            "description": "Any amount in the shopping cart larger that this, and smaller that maximum amount (if it is set), will trigger proactive chat.",
+            "type": "number",
+            "scope": "module",
+            "group": "Proactive chat"
+        },
+        "proactiveOnCartAmountMax": {
+            "friendlyName": "Cart amount maximum",
+            "description": "Any amount in the shopping cart smaller that this, and larger that minimum amount (if it is set), will trigger proactive chat.",
+            "type": "number",
+            "scope": "module",
+            "group": "Proactive chat"
+        },
+        "proactiveOnCartAmountMessage": {
+            "friendlyName": "Cart amount chat greeting",
+            "description": "Initial proactive chat message.",
+            "type": "string",
+            "scope": "module",
+            "group": "Proactive chat",
+            "default": "Hi! Just checking in to see if I can help answer any questions you may have."
+        },
+        "proactiveOnCartNoOfItemsMin": {
+            "friendlyName": "Cart no. of items minimum",
+            "description": "Any number of items in the shopping cart larger that this, and smaller that Cart no. of items maximum (if it is set), will trigger proactive chat.",
+            "type": "number",
+            "scope": "module",
+            "group": "Proactive chat"
+        },
+        "proactiveOnCartNoOfItemsMax": {
+            "friendlyName": "Cart no. of items maximum",
+            "description": "Any number of items in the shopping cart smaller that this, and larger that Cart no. of items minimum (if it is set), will trigger proactive chat.",
+            "type": "number",
+            "scope": "module",
+            "group": "Proactive chat"
+        },
+        "proactiveOnCartNoOfItemsMessage": {
+            "friendlyName": "Cart no. of items chat greeting",
+            "description": "Initial proactive chat message.",
+            "type": "string",
+            "scope": "module",
+            "group": "Proactive chat",
+            "default": "Hi! Just checking in to see if I can help answer any questions you may have."
+        },
+        "proactiveOnCartSpecificProductList": {
+            "friendlyName": "Specific product in the cart list",
+            "description": "List of product IDs that adding to a cart will trigger proactive chat.",
+            "type": "array",
+            "scope": "module",
+            "group": "Proactive chat",
+            "items": {
+                "type": "string"
+            }
+        },
+        "proactiveOnCartSpecificProductMessage": {
+            "friendlyName": "Specific product in the cart chat greeting",
+            "description": "Initial proactive chat message.",
+            "type": "string",
+            "scope": "module",
+            "group": "Proactive chat",
+            "default": "Hi! Just checking in to see if I can help answer any questions you may have."
+        }
+    }
+}

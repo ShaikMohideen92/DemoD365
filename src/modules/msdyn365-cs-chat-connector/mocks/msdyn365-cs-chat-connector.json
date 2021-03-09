@@ -1,0 +1,24 @@
+{
+  "id": "R1Module1",
+  "config": {
+    "blockId": "Microsoft_Omnichannel_LCWidget",
+    "src": "https://oc-cdn-ocprod.azureedge.net/livechatwidget/scripts/LiveChatBootstrapper.js",
+    "dataAppId": "",
+    "dataOrgId": "",
+    "dataOrgUrl": "",
+    "proactiveChatEnabled": true,
+    "proactiveOnSpecificGeographyCountry": "US",
+    "proactiveOnSpecificGeographyMessage": "(MOCK) Hi! Specific Geography.",
+    "proactiveDefaultMessage": "(MOCK) Hi! Default Message.",
+    "proactiveOnSpecificPageMessage": "(MOCK)Hi! SpecificPage",
+    "proactiveOnDateRangeMessage": "(MOCK)Hi! DateRange",
+    "proactiveWaitTimeMessage": "(MOCK)Hi! WaitOnTime.",
+    "proactiveOnPageVisitMessage": "(MOCK)Hi! Page Visit."
+  },
+  "data": {
+    "actionResponse": {
+      "text": "Sample Action Response"
+    }
+  },
+  "typeName": "msdyn365-cs-chat-connector"
+}

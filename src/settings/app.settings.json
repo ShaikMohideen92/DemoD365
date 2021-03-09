@@ -1,0 +1,304 @@
+{
+    "config": {
+        "enableStockCheck": {
+            "friendlyName": "Enable stock check in app",
+            "description": "Flag to enable ot disable stock check in app",
+            "type": "boolean",
+            "default": false,
+            "group": "Inventory management"
+        },
+        "inventoryLevel": {
+            "friendlyName": "Inventory level based on",
+            "description": "This setting defines how inventory levels are calculated",
+            "type": "string",
+            "enum": {
+                "totalAvailable": "Total available",
+                "physicalAvailable": "Physical available",
+                "inventoryThreshold": "Out of stock threshold"
+            },
+            "default": "inventoryThreshold",
+            "required": true,
+            "group": "Inventory management"
+        },
+        "inventoryRanges": {
+            "friendlyName": "Inventory ranges",
+            "description": "This setting defines displays which inventory ranges are displayed on the site, only applicable if Total Available or Physical Available are selected",
+            "type": "string",
+            "enum": {
+                "all": "All",
+                "lowAndOutofStock": "Low and out of stock",
+                "outOfStock": "Out of stock"
+            },
+            "default": "all",
+            "required": true,
+            "group": "Inventory management"
+        },
+        "outOfStockThreshold": {
+            "friendlyName": "Out of stock threshold",
+            "description": "Active when Inventory Buffer is selected. Threshold to use when determining if a product is out of stock or not -- if its less than or equal to this value, it'll be marked as out of stock",
+            "type": "number",
+            "default": 0,
+            "group": "Inventory management"
+        },
+        "maxQuantityForCartLineItem": {
+            "friendlyName": "Cart line quantity limit",
+            "description": "Limit to the number of copies of an item that can be added to a cart line",
+            "type": "number",
+            "default": 10,
+            "group": "Inventory management"
+        },
+        "hideRating": {
+            "friendlyName": "Hide rating",
+            "description": "This settings hides the rating for products across the site",
+            "type": "boolean",
+            "default": false
+        },
+        "geolocationApiUrl": {
+            "friendlyName": "Geolocation API endpoint",
+            "description": "Geolocation Api endpoint used to retrieve the location information in bopis search",
+            "type": "string",
+            "default": "https://dev.virtualearth.net/REST/v1/"
+        },
+        "reviewTextMaxLength": {
+            "friendlyName": "Review text max length",
+            "description": "Maximum number of characters for the review text",
+            "type": "number",
+            "default": 500
+        },
+        "reviewTitleMaxLength": {
+            "friendlyName": "Review title max length",
+            "description": "Maximum number of characters for the title",
+            "type": "number",
+            "default": 50
+        },
+        "disableTooltip": {
+            "friendlyName": "Disable tooltip flag",
+            "description": "Flag to disable tooltip on items",
+            "type": "boolean",
+            "default": false
+        },
+        "searchQueryStringParameter": {
+            "friendlyName": "Search query string parameter",
+            "description": "Query string parameter for search",
+            "type": "string",
+            "default": "q"
+        },
+        "searchInputMaxLength": {
+            "friendlyName": "Search input max length",
+            "description": "Maximum number of characters for the search input field",
+            "type": "number",
+            "default": 50
+        },
+        "addToCartBehavior": {
+            "friendlyName": "Add product to cart",
+            "description": "This setting defines the experience when a product is added to cart",
+            "type": "string",
+            "enum": {
+                "goToCart": "Navigate to cart page",
+                "showModal": "Show notification",
+                "nothing": "Do not navigate to cart page"
+            },
+            "default": "goToCart"
+        },
+        "giftCardSupported": {
+            "friendlyName": "Supported types of gift card",
+            "description": "This property defines the type of gift card that should be allowed",
+            "type": "string",
+            "enum": {
+                "internal": "Dynamics 365 gift card",
+                "external": "SVS and Givex gift cards",
+                "both": "Dynamics 365, SVS and Givex gift cards"
+            },
+            "default": "internal",
+            "required": true
+        },
+        "breadcrumbType": {
+            "friendlyName": "Breadcrumb display type on PDP",
+            "description": "This setting defines the breadcrumb display on Product page",
+            "type": "string",
+            "enum": {
+                "category": "Show category hierarchy",
+                "categoryAndBack": "Show category hierarchy and back to results ",
+                "back": "Show back to results"
+            },
+            "default": "category",
+            "required": true
+        },
+        "msDyn365CsChatConnectorSrc": {
+            "friendlyName": "Script source",
+            "description": "Scrip URL.",
+            "type": "string",
+            "group": "Commerce Chat with Customer Service"
+        },
+        "msDyn365CsChatConnectorDataAppId": {
+            "friendlyName": "Data application id",
+            "description": "Script data-app-id attribute.",
+            "type": "string",
+            "group": "Commerce Chat with Customer Service"
+        },
+        "msDyn365CsChatConnectorDataOrgId": {
+            "friendlyName": "Data organization id",
+            "description": "Script data-org-id attribute.",
+            "type": "string",
+            "group": "Commerce Chat with Customer Service"
+        },
+        "msDyn365CsChatConnectorDataOrgUrl": {
+            "friendlyName": "Data organization URL",
+            "description": "Script data-org-url attribute.",
+            "type": "string",
+            "group": "Commerce Chat with Customer Service"
+        },
+        "msDyn365CsChatConnectorDataHideChatButton": {
+            "friendlyName": "Data hide chat button",
+            "description": "Script data-hide-chat-button attribute.",
+            "type": "boolean",
+            "group": "Commerce Chat with Customer Service"
+        },
+        "msDyn365CsChatConnectorDataColorOverride": {
+            "friendlyName": "Data color override",
+            "description": "Script data-color-override attribute.",
+            "type": "string",
+            "group": "Commerce Chat with Customer Service"
+        },
+        "msDyn365CsChatConnectorDataFontFamilyOverride": {
+            "friendlyName": "Data font family override",
+            "description": "Script data-font-family-override attribute.",
+            "type": "string",
+            "group": "Commerce Chat with Customer Service"
+        },
+    
+        "pvaChatConnectorBotTokenAPILoginURL": {
+            "friendlyName": "Login URL",
+            "description": "Login URL domain/oauth/token",
+            "type": "string",
+            "group": "Commerce Chat with Power Virtual Agents"
+        },
+        "pvaChatConnectorBotTokenAPIUsername": {
+            "friendlyName": "Username",
+            "description": "Username",
+            "type": "string",
+            "group": "Commerce Chat with Power Virtual Agents"
+        },
+        "pvaChatConnectorBotTokenAPIPassword": {
+            "friendlyName": "Password",
+            "description": "Password",
+            "type": "string",
+            "group": "Commerce Chat with Power Virtual Agents"
+        },
+        "pvaChatConnectorBotTokenAPIClientID": {
+            "friendlyName": "Client id",
+            "description": "Client id",
+            "type": "string",
+            "group": "Commerce Chat with Power Virtual Agents"
+        },
+        "pvaChatConnectorBotTokenAPIClientSecret": {
+            "friendlyName": "Client secret",
+            "description": "Client secret",
+            "type": "string",
+            "group": "Commerce Chat with Power Virtual Agents"
+        },
+        "pvaChatConnectorBotTokenAPIGetBotTokenURL": {
+            "friendlyName": "Get bot token URL",
+            "description": "URL of your API returning bot conversation token.",
+            "type": "string",
+            "group": "Commerce Chat with Power Virtual Agents"
+        },
+        "pvaChatConnectorBotFrameworkCDNURL": {
+            "friendlyName": "Bot framework webchat CDN URL",
+            "description": "Bot framework webchat CDN URL",
+            "type": "string",
+            "group": "Commerce Chat with Power Virtual Agents"
+        },
+        "pvaChatConnectorBotframeworkDirectlineTokenURL": {
+            "friendlyName": "Botframework directline token generate URL",
+            "description": "Botframework directline token generate URL",
+            "type": "string",
+            "default": "https://directline.botframework.com/v3/directline/tokens/generate",
+            "group": "Commerce Chat with Power Virtual Agents"
+        },
+        "pvaChatConnectorTokenSecret": {
+            "friendlyName": "Botframework Secret",
+            "description": "Botframework Secret can be used to obtain conversation token, this is not secure. It should be used only for testing.",
+            "type": "string",
+            "group": "Commerce Chat with Power Virtual Agents"
+        },
+        "pvaChatConnectorPowervaDirectlineTokenURL": {
+            "friendlyName": "Directline token generate URL",
+            "description": "PVA directline token generate URL",
+            "type": "string",
+            "default": "https://powerva.microsoft.com/api/botmanagement/v1/directline/directlinetoken",
+            "group": "Commerce Chat with Power Virtual Agents"
+        },
+        "pvaChatConnectorBotID": {
+            "friendlyName": "Bot id",
+            "description": "Bot and tenant id can be used to obtain conversation token, this is not secure. It should be used only for testing.",
+            "type": "string",
+            "group": "Commerce Chat with Power Virtual Agents"
+        },
+        "pvaChatConnectorTenantID": {
+            "friendlyName": "Tenant id",
+            "description": "Bot and tenant id can be used to obtain conversation token, this is not secure. It should be used only for testing.",
+            "type": "string",
+            "group": "Commerce Chat with Power Virtual Agents"
+        }
+    },
+    "routes": {
+        "orderDetails": {
+            "friendlyName": "Order details Page Route",
+            "description": "Order details Page Route"
+        },
+        "cart": {
+            "friendlyName": "Cart Page Route",
+            "description": "Cart Page Route"
+        },
+        "checkout": {
+            "friendlyName": "Checkout Page Route",
+            "description": "Checkout Page Route"
+        },
+        "orderConfirmation": {
+            "friendlyName": "Order Confirmation Page Route",
+            "description": "Order Confirmation Page Route"
+        },
+        "home": {
+            "friendlyName": "Home Page Route",
+            "description": "Home Page Route"
+        },
+        "rnrPrivacyPolicy": {
+            "friendlyName": "RNR Privacy Policy",
+            "description": "Privacy Policy for Ratings and Reviews"
+        },
+        "wishlist": {
+            "friendlyName": "Wishlist Page Route",
+            "description": "Wishlist Page Route"
+        },
+        "loyalty": {
+            "friendlyName": "Loyalty Page Route",
+            "description": "Loyalty Page Route"
+        },
+        "loyaltyJoin": {
+            "friendlyName": "Loyalty sign up Page Route",
+            "description": "Loyalty sign up Page Route"
+        },
+        "loyaltyTerms": {
+            "friendlyName": "Loyalty terms page route",
+            "description": "Loyalty terms Page Route"
+        },
+        "search": {
+            "friendlyName": "Search page route",
+            "description": "Search page route"
+        },
+        "ordertemplate": {
+            "friendlyName": "Order template details Page Route",
+            "description": "Order template details Page Route"
+        },
+        "ordertemplatelist": {
+            "friendlyName": "Order template list Page Route",
+            "description": "Order template list Page Route"
+        }
+    },
+    "themes": {
+        "fabrikam": {
+            "friendlyName": "Fabrikam theme"
+        }
+    }
+}
